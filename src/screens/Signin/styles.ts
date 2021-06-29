@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
   },
   image: {
     width: "100%",
-    height: 360,
+    height: 375,
   },
   content: {
     paddingHorizontal: 50,
