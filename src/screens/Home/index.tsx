@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, FlatList } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import { styles } from "./styles";
 import { Profile } from "../../components/Profile";
@@ -11,6 +12,8 @@ import { ListDivider } from "../../components/ListDivider";
 import { Background } from "../../components/Background";
 
 export const Home = () => {
+  const navigation = useNavigation();
+
   const [category, setCategory] = useState("");
   const events = [
     {
@@ -43,6 +46,10 @@ export const Home = () => {
     categoryId === category ? setCategory("") : setCategory(categoryId);
   }
 
+  function handleEventDetails() {
+    navigation.navigate("EventDetails");
+  }
+
   return (
     <Background>
       <View style={styles.container}>
@@ -61,7 +68,9 @@ export const Home = () => {
           <FlatList
             data={events}
             keyExtractor={(item) => item.id}
-            renderItem={({ item }) => <Event data={item} />}
+            renderItem={({ item }) => (
+              <Event onPress={handleEventDetails} data={item} />
+            )}
             ItemSeparatorComponent={() => <ListDivider />}
             style={styles.event}
             showsVerticalScrollIndicator={false}
