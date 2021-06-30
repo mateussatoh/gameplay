@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
   },
   image: {
     width: "100%",
-    height: 375,
+    height: 390,
   },
   content: {
     paddingHorizontal: 50,
@@ -27,7 +27,7 @@ export const styles = StyleSheet.create({
     fontSize: 15,
     textAlign: "center",
     marginBottom: 64,
-    fontFamily: theme.fonts.title500,
+    fontFamily: theme.fonts.text400,
     lineHeight: 25,
   },
 });
