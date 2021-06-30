@@ -8,6 +8,7 @@ import { CategorySelect } from "../../components/CategorySelect";
 import { ListHeader } from "../../components/ListHeader";
 import { Event } from "../../components/Event";
 import { ListDivider } from "../../components/ListDivider";
+import { Background } from "../../components/Background";
 
 export const Home = () => {
   const [category, setCategory] = useState("");
@@ -43,28 +44,30 @@ export const Home = () => {
   }
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Profile />
-        <ButtonAdd />
-      </View>
+    <Background>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Profile />
+          <ButtonAdd />
+        </View>
 
-      <CategorySelect
-        setCategory={handleCategorySelect}
-        categorySelected={category}
-      />
-
-      <View style={styles.content}>
-        <ListHeader title="Partidas agendadas" subtitle="Total 6" />
-        <FlatList
-          data={events}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => <Event data={item} />}
-          ItemSeparatorComponent={() => <ListDivider />}
-          style={styles.event}
-          showsVerticalScrollIndicator={false}
+        <CategorySelect
+          setCategory={handleCategorySelect}
+          categorySelected={category}
         />
+
+        <View style={styles.content}>
+          <ListHeader title="Partidas agendadas" subtitle="Total 6" />
+          <FlatList
+            data={events}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => <Event data={item} />}
+            ItemSeparatorComponent={() => <ListDivider />}
+            style={styles.event}
+            showsVerticalScrollIndicator={false}
+          />
+        </View>
       </View>
-    </View>
+    </Background>
   );
 };
