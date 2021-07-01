@@ -12,6 +12,8 @@ import { Feather } from "@expo/vector-icons";
 
 import { styles } from "./styles";
 
+import { Guilds } from "../Guilds";
+
 import { Background } from "../../components/Background";
 import { Header } from "../../components/Header";
 import { CategorySelect } from "../../components/CategorySelect";
@@ -19,13 +21,26 @@ import { GuildIcon } from "../../components/GuildIcon";
 import { InputSmall } from "../../components/InputSmall";
 import { TextArea } from "../../components/TextArea";
 import { ButtonIcon } from "../../components/ButtonIcon";
+import { ModalView } from "../../components/ModalView";
 import { theme } from "../../global/styles/theme";
+import { GuildProps } from "../../components/Event";
 
 export function EventCreate() {
   const [category, setCategory] = useState("");
+  const [modal, setModal] = useState(false);
+  const [guild, setGuild] = useState<GuildProps>({} as GuildProps);
 
   function handleCategorySelect(categoryId: string) {
     categoryId === category ? setCategory("") : setCategory(categoryId);
+  }
+
+  function handleModal() {
+    setModal(true);
+  }
+
+  function handleGuild(guild: GuildProps) {
+    setGuild(guild);
+    setModal(false);
   }
 
   return (
@@ -51,14 +66,13 @@ export function EventCreate() {
           />
 
           <View style={styles.form}>
-            <RectButton>
+            <RectButton onPress={() => setModal(true)}>
               <View style={styles.select}>
-                {
-                  // <View style={styles.image} />
-                  <GuildIcon />
-                }
+                {guild.icon ? <GuildIcon /> : <View style={styles.image} />}
                 <View style={styles.selectBody}>
-                  <Text style={styles.label}>Selecione um servidor</Text>
+                  <Text style={styles.label}>
+                    {guild.name ? guild.name : "Selecione um servidor"}
+                  </Text>
                 </View>
                 <Feather
                   name="chevron-right"
@@ -102,6 +116,9 @@ export function EventCreate() {
           </View>
         </Background>
       </ScrollView>
+      <ModalView visible={modal}>
+        <Guilds handleGuild={handleGuild} />
+      </ModalView>
     </KeyboardAvoidingView>
   );
 }
