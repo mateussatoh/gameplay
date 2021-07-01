@@ -56,7 +56,7 @@ export function EventDetails() {
         style={styles.members}
       />
       <View style={styles.footer}>
-        <ButtonIcon title="Entrar na partida" />
+        <ButtonIcon hasIcon title="Entrar na partida" />
       </View>
     </Background>
   );

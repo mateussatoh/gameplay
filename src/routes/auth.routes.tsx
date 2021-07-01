@@ -6,6 +6,7 @@ import { theme } from "../global/styles/theme";
 import { Home } from "../screens/Home";
 import { Signin } from "../screens/Signin";
 import { EventDetails } from "../screens/EventDetails";
+import { EventCreate } from "../screens/EventCreate";
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -22,6 +23,7 @@ export const AuthRoutes = () => {
       <Screen name="Signin" component={Signin} />
       <Screen name="Home" component={Home} />
       <Screen name="EventDetails" component={EventDetails} />
+      <Screen name="EventCreate" component={EventCreate} />
     </Navigator>
   );
 };

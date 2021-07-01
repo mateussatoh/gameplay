@@ -50,12 +50,16 @@ export const Home = () => {
     navigation.navigate("EventDetails");
   }
 
+  function handleEventCreate() {
+    navigation.navigate("EventCreate");
+  }
+
   return (
     <Background>
       <View style={styles.container}>
         <View style={styles.header}>
           <Profile />
-          <ButtonAdd />
+          <ButtonAdd onPress={handleEventCreate} />
         </View>
 
         <CategorySelect

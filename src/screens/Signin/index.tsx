@@ -28,7 +28,11 @@ export const Signin = () => {
             favoritos com seus amigos
           </Text>
 
-          <ButtonIcon title="Entrar com Discord" onPress={handleSignin} />
+          <ButtonIcon
+            hasIcon
+            title="Entrar com Discord"
+            onPress={handleSignin}
+          />
         </View>
       </View>
     </Background>
