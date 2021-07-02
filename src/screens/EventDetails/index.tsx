@@ -44,7 +44,11 @@ export function EventDetails() {
       <ImageBackground source={BannerPng} style={styles.banner}>
         <View style={styles.bannerContent}>
           <Text style={styles.title}>Lolzinho nosso de cada sexta</Text>
-          <Text style={styles.subtitle}>Rndom picks obrigatórios</Text>
+          <Text style={styles.subtitle}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio nobis
+            eaque soluta distinctio enim eligendi. Neque in repellendus autem
+            sint.
+          </Text>
         </View>
       </ImageBackground>
       <ListHeader title="Jogadores" subtitle="Total 3" />

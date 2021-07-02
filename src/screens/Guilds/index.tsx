@@ -1,8 +1,7 @@
 import React from "react";
 
 import { View, FlatList } from "react-native";
-import { GuildProps } from "../../components/Event";
-import { Guild } from "../../components/Guild";
+import { Guild, GuildProps } from "../../components/Guild";
 import { ListDivider } from "../../components/ListDivider";
 import { styles } from "./styles";
 
@@ -18,6 +17,60 @@ export function Guilds({ handleGuild }: Props) {
       icon: null,
       owner: true,
     },
+    {
+      id: "2",
+      name: "Valocrime",
+      icon: null,
+      owner: true,
+    },
+    {
+      id: "3",
+      name: "Valocrime",
+      icon: null,
+      owner: true,
+    },
+    {
+      id: "4",
+      name: "Valocrime",
+      icon: null,
+      owner: true,
+    },
+    {
+      id: "5",
+      name: "Valocrime",
+      icon: null,
+      owner: true,
+    },
+    {
+      id: "6",
+      name: "Valocrime",
+      icon: null,
+      owner: true,
+    },
+    {
+      id: "7",
+      name: "Valocrime",
+      icon: null,
+      owner: true,
+    },
+    {
+      id: "8",
+      name: "Valocrime",
+      icon: null,
+      owner: true,
+    },
+    {
+      id: "9",
+      name: "Valocrime",
+      icon: null,
+      owner: true,
+    },
+    {
+      id: "10",
+      name: "Valocrime",
+      icon: null,
+      owner: true,
+    },
   ];
   return (
     <View style={styles.container}>
@@ -30,6 +83,7 @@ export function Guilds({ handleGuild }: Props) {
         showsVerticalScrollIndicator={false}
         ItemSeparatorComponent={() => <ListDivider />}
         style={styles.guilds}
+        contentContainerStyle={{ paddingBottom: 69, paddingTop: 24 }}
       />
     </View>
   );

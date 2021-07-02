@@ -4,6 +4,17 @@ import { View } from "react-native";
 
 import { styles } from "./styles";
 
-export function ListDivider() {
-  return <View style={styles.container} />;
+type Props = {
+  moreVerticalPadding?: boolean;
+};
+
+export function ListDivider({ moreVerticalPadding = false }: Props) {
+  return (
+    <View
+      style={[
+        styles.container,
+        moreVerticalPadding ? { marginVertical: 16 } : { marginVertical: 12 },
+      ]}
+    />
+  );
 }

@@ -40,6 +40,102 @@ export const Home = () => {
       date: "05/07 ás 20:00",
       description: "Random picks obrigatórios",
     },
+    {
+      id: "3",
+      guild: {
+        id: "1",
+        name: "Lolzinho nosso de cada sexta",
+        icon: null,
+        owner: true,
+      },
+      category: "1",
+      date: "05/07 ás 20:00",
+      description: "Random picks obrigatórios",
+    },
+    {
+      id: "4",
+      guild: {
+        id: "1",
+        name: "Lolzinho nosso de cada sexta",
+        icon: null,
+        owner: true,
+      },
+      category: "1",
+      date: "05/07 ás 20:00",
+      description: "Random picks obrigatórios",
+    },
+    {
+      id: "5",
+      guild: {
+        id: "1",
+        name: "Lolzinho nosso de cada sexta",
+        icon: null,
+        owner: true,
+      },
+      category: "1",
+      date: "05/07 ás 20:00",
+      description: "Random picks obrigatórios",
+    },
+    {
+      id: "6",
+      guild: {
+        id: "1",
+        name: "Lolzinho nosso de cada sexta",
+        icon: null,
+        owner: true,
+      },
+      category: "1",
+      date: "05/07 ás 20:00",
+      description: "Random picks obrigatórios",
+    },
+    {
+      id: "7",
+      guild: {
+        id: "1",
+        name: "Lolzinho nosso de cada sexta",
+        icon: null,
+        owner: true,
+      },
+      category: "1",
+      date: "05/07 ás 20:00",
+      description: "Random picks obrigatórios",
+    },
+    {
+      id: "8",
+      guild: {
+        id: "1",
+        name: "Lolzinho nosso de cada sexta",
+        icon: null,
+        owner: true,
+      },
+      category: "1",
+      date: "05/07 ás 20:00",
+      description: "Random picks obrigatórios",
+    },
+    {
+      id: "9",
+      guild: {
+        id: "1",
+        name: "Lolzinho nosso de cada sexta",
+        icon: null,
+        owner: true,
+      },
+      category: "1",
+      date: "05/07 ás 20:00",
+      description: "Random picks obrigatórios",
+    },
+    {
+      id: "10",
+      guild: {
+        id: "1",
+        name: "Lolzinho nosso de cada sexta",
+        icon: null,
+        owner: true,
+      },
+      category: "1",
+      date: "05/07 ás 20:00",
+      description: "Random picks obrigatórios",
+    },
   ];
 
   function handleCategorySelect(categoryId: string) {
@@ -67,19 +163,18 @@ export const Home = () => {
           categorySelected={category}
         />
 
-        <View style={styles.content}>
-          <ListHeader title="Partidas agendadas" subtitle="Total 6" />
-          <FlatList
-            data={events}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item }) => (
-              <Event onPress={handleEventDetails} data={item} />
-            )}
-            ItemSeparatorComponent={() => <ListDivider />}
-            style={styles.event}
-            showsVerticalScrollIndicator={false}
-          />
-        </View>
+        <ListHeader title="Partidas agendadas" subtitle="Total 6" />
+        <FlatList
+          data={events}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <Event onPress={handleEventDetails} data={item} />
+          )}
+          ItemSeparatorComponent={() => <ListDivider moreVerticalPadding />}
+          contentContainerStyle={{ paddingBottom: 69, paddingTop: 24 }}
+          style={styles.event}
+          showsVerticalScrollIndicator={false}
+        />
       </View>
     </Background>
   );

@@ -7,6 +7,14 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     alignSelf: "center",
   },
+  guildIconContainer: {
+    height: 68,
+    width: 64,
+    borderRadius: 8,
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: 20,
+  },
   content: {
     flex: 1,
   },
@@ -14,12 +22,18 @@ export const styles = StyleSheet.create({
     width: "100%",
     flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom: 12,
+    marginBottom: 4,
   },
   title: {
     fontFamily: theme.fonts.title700,
     color: theme.colors.heading,
     fontSize: 18,
+  },
+  game: {
+    fontFamily: theme.fonts.text400,
+    color: theme.colors.highlight,
+    fontSize: 13,
+    marginBottom: 8,
   },
   category: {
     fontFamily: theme.fonts.text400,

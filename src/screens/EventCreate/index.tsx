@@ -23,23 +23,18 @@ import { TextArea } from "../../components/TextArea";
 import { ButtonIcon } from "../../components/ButtonIcon";
 import { ModalView } from "../../components/ModalView";
 import { theme } from "../../global/styles/theme";
-import { GuildProps } from "../../components/Event";
+import { GuildProps } from "../../components/Guild";
 
 export function EventCreate() {
   const [category, setCategory] = useState("");
   const [modal, setModal] = useState(false);
   const [guild, setGuild] = useState<GuildProps>({} as GuildProps);
 
-  function handleCategorySelect(categoryId: string) {
-    categoryId === category ? setCategory("") : setCategory(categoryId);
-  }
-
-  function handleModal() {
-    setModal(true);
-  }
-
   function handleGuild(guild: GuildProps) {
     setGuild(guild);
+    setModal(false);
+  }
+  function closeModal() {
     setModal(false);
   }
 
@@ -48,8 +43,8 @@ export function EventCreate() {
       style={styles.container}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
-      <ScrollView>
-        <Background>
+      <Background>
+        <ScrollView>
           <Header title="Agendar Partida" />
           <Text
             style={[
@@ -114,9 +109,9 @@ export function EventCreate() {
               <ButtonIcon title="Agendar" />
             </View>
           </View>
-        </Background>
-      </ScrollView>
-      <ModalView visible={modal}>
+        </ScrollView>
+      </Background>
+      <ModalView closeModal={closeModal} visible={modal}>
         <Guilds handleGuild={handleGuild} />
       </ModalView>
     </KeyboardAvoidingView>
