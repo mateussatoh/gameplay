@@ -1,5 +1,4 @@
 import React from "react";
-import { useNavigation } from "@react-navigation/native";
 import { View, Text, Image, Alert, ActivityIndicator } from "react-native";
 
 import { styles } from "./styles";
@@ -18,8 +17,6 @@ export const Signin = () => {
     } catch (error) {
       Alert.alert(error);
     }
-
-    // navigation.navigate("Home");
   }
 
   return (
