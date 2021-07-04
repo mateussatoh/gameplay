@@ -42,8 +42,8 @@ export const Home = () => {
     categoryId === category ? setCategory("") : setCategory(categoryId);
   }
 
-  function handleEventDetails() {
-    navigation.navigate("EventDetails");
+  function handleEventDetails(guildSelected: EventProps) {
+    navigation.navigate("EventDetails", { guildSelected });
   }
 
   function handleEventCreate() {
@@ -75,7 +75,7 @@ export const Home = () => {
               data={events}
               keyExtractor={(item) => item.id}
               renderItem={({ item }) => (
-                <Event onPress={handleEventDetails} data={item} />
+                <Event onPress={() => handleEventDetails(item)} data={item} />
               )}
               ItemSeparatorComponent={() => <ListDivider moreVerticalPadding />}
               contentContainerStyle={{ paddingBottom: 69, paddingTop: 24 }}

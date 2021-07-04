@@ -47,6 +47,7 @@ export function EventCreate() {
       id: uuid.v4(),
       guild,
       category,
+      description,
       date: `${day}/${month} às ${hour}:${minute}h`,
     };
 
