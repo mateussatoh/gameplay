@@ -33,7 +33,7 @@ export const Signin = () => {
             favoritos com seus amigos
           </Text>
           {loading ? (
-            <ActivityIndicator color={theme.colors.primary} size={64} />
+            <ActivityIndicator color={theme.colors.primary} size="large" />
           ) : (
             <ButtonIcon
               hasIcon

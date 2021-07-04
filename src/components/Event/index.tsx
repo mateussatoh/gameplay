@@ -34,12 +34,7 @@ export const Event = ({ data, ...rest }: Props) => {
   return (
     <RectButton {...rest}>
       <View style={styles.container}>
-        <LinearGradient
-          style={styles.guildIconContainer}
-          colors={[secondary50, secondary70]}
-        >
-          <GuildIcon />
-        </LinearGradient>
+        <GuildIcon guildId={data.id} iconId={data.icon} />
 
         <View style={styles.content}>
           <View style={styles.header}>
