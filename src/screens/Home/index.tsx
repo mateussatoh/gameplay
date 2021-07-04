@@ -1,142 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { View, FlatList } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useFocusEffect } from "@react-navigation/native";
 
 import { styles } from "./styles";
 import { Profile } from "../../components/Profile";
 import { ButtonAdd } from "../../components/ButtonAdd";
 import { CategorySelect } from "../../components/CategorySelect";
 import { ListHeader } from "../../components/ListHeader";
-import { Event } from "../../components/Event";
+import { Event, EventProps } from "../../components/Event";
 import { ListDivider } from "../../components/ListDivider";
 import { Background } from "../../components/Background";
+import { Loading } from "../../components/Loading";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { COLLECTION_EVENTS } from "../../configs/database";
 
 export const Home = () => {
   const navigation = useNavigation();
 
   const [category, setCategory] = useState("");
-  const events = [
-    {
-      id: "1",
-      guild: {
-        id: "1",
-        name: "Lolzinho nosso de cada sexta",
-        icon: null,
-        owner: true,
-      },
-      category: "1",
-      date: "05/07 ás 20:00",
-      description: "Random picks obrigatórios",
-    },
-    {
-      id: "2",
-      guild: {
-        id: "1",
-        name: "Lolzinho nosso de cada sexta",
-        icon: null,
-        owner: true,
-      },
-      category: "1",
-      date: "05/07 ás 20:00",
-      description: "Random picks obrigatórios",
-    },
-    {
-      id: "3",
-      guild: {
-        id: "1",
-        name: "Lolzinho nosso de cada sexta",
-        icon: null,
-        owner: true,
-      },
-      category: "1",
-      date: "05/07 ás 20:00",
-      description: "Random picks obrigatórios",
-    },
-    {
-      id: "4",
-      guild: {
-        id: "1",
-        name: "Lolzinho nosso de cada sexta",
-        icon: null,
-        owner: true,
-      },
-      category: "1",
-      date: "05/07 ás 20:00",
-      description: "Random picks obrigatórios",
-    },
-    {
-      id: "5",
-      guild: {
-        id: "1",
-        name: "Lolzinho nosso de cada sexta",
-        icon: null,
-        owner: true,
-      },
-      category: "1",
-      date: "05/07 ás 20:00",
-      description: "Random picks obrigatórios",
-    },
-    {
-      id: "6",
-      guild: {
-        id: "1",
-        name: "Lolzinho nosso de cada sexta",
-        icon: null,
-        owner: true,
-      },
-      category: "1",
-      date: "05/07 ás 20:00",
-      description: "Random picks obrigatórios",
-    },
-    {
-      id: "7",
-      guild: {
-        id: "1",
-        name: "Lolzinho nosso de cada sexta",
-        icon: null,
-        owner: true,
-      },
-      category: "1",
-      date: "05/07 ás 20:00",
-      description: "Random picks obrigatórios",
-    },
-    {
-      id: "8",
-      guild: {
-        id: "1",
-        name: "Lolzinho nosso de cada sexta",
-        icon: null,
-        owner: true,
-      },
-      category: "1",
-      date: "05/07 ás 20:00",
-      description: "Random picks obrigatórios",
-    },
-    {
-      id: "9",
-      guild: {
-        id: "1",
-        name: "Lolzinho nosso de cada sexta",
-        icon: null,
-        owner: true,
-      },
-      category: "1",
-      date: "05/07 ás 20:00",
-      description: "Random picks obrigatórios",
-    },
-    {
-      id: "10",
-      guild: {
-        id: "1",
-        name: "Lolzinho nosso de cada sexta",
-        icon: null,
-        owner: true,
-      },
-      category: "1",
-      date: "05/07 ás 20:00",
-      description: "Random picks obrigatórios",
-    },
-  ];
+  const [events, setEvents] = useState<EventProps[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  async function fetchEvents() {
+    const storage = await AsyncStorage.getItem(COLLECTION_EVENTS);
+    const storageEvents: EventProps[] = storage ? JSON.parse(storage) : [];
+    if (category) {
+      setEvents(storageEvents.filter((item) => item.category === category));
+    } else {
+      setEvents(storageEvents);
+    }
+    setLoading(false);
+  }
+
+  useFocusEffect(
+    useCallback(() => {
+      fetchEvents();
+    }, [category])
+  );
 
   function handleCategorySelect(categoryId: string) {
     categoryId === category ? setCategory("") : setCategory(categoryId);
@@ -163,18 +63,27 @@ export const Home = () => {
           categorySelected={category}
         />
 
-        <ListHeader title="Partidas agendadas" subtitle="Total 6" />
-        <FlatList
-          data={events}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => (
-            <Event onPress={handleEventDetails} data={item} />
-          )}
-          ItemSeparatorComponent={() => <ListDivider moreVerticalPadding />}
-          contentContainerStyle={{ paddingBottom: 69, paddingTop: 24 }}
-          style={styles.event}
-          showsVerticalScrollIndicator={false}
-        />
+        {loading ? (
+          <Loading />
+        ) : (
+          <>
+            <ListHeader
+              title="Partidas agendadas"
+              subtitle={`Total ${events.length}`}
+            />
+            <FlatList
+              data={events}
+              keyExtractor={(item) => item.id}
+              renderItem={({ item }) => (
+                <Event onPress={handleEventDetails} data={item} />
+              )}
+              ItemSeparatorComponent={() => <ListDivider moreVerticalPadding />}
+              contentContainerStyle={{ paddingBottom: 69, paddingTop: 24 }}
+              style={styles.event}
+              showsVerticalScrollIndicator={false}
+            />
+          </>
+        )}
       </View>
     </Background>
   );

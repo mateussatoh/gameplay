@@ -8,7 +8,7 @@ import { styles } from "./styles";
 export function Loading() {
   return (
     <View style={styles.container}>
-      <ActivityIndicator size="large" color={theme.colors.primary} />
+      <ActivityIndicator size={64} color={theme.colors.primary} />
     </View>
   );
 }
