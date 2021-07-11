@@ -38,17 +38,25 @@ export function EventCreate() {
   const [month, setMonth] = useState("");
   const [hour, setHour] = useState("");
   const [minute, setMinute] = useState("");
+  const [game, setGame] = useState("");
   const [description, setDescription] = useState("");
 
   const navigation = useNavigation();
 
   async function handleEventCreation() {
+    const DATE_VALUE =
+      parseInt(day) * 60 * 24 +
+      parseInt(month) * 60 * 24 * 30 +
+      parseInt(hour) * 60 +
+      parseInt(minute);
     const newEvent = {
       id: uuid.v4(),
       guild,
       category,
       description,
+      game,
       date: `${day}/${month} às ${hour}:${minute}h`,
+      date_value: DATE_VALUE,
     };
 
     //FALTA VALIDACAO!
@@ -134,6 +142,16 @@ export function EventCreate() {
                 </View>
               </View>
             </View>
+            <View style={[styles.field, { marginBottom: 12 }]}>
+              <Text style={styles.label}>Jogo</Text>
+            </View>
+            <TextArea
+              maxLength={30}
+              numberOfLines={1}
+              autoCorrect={false}
+              onChangeText={setGame}
+              inline
+            />
             <View style={[styles.field, { marginBottom: 12 }]}>
               <Text style={styles.label}>Descrição</Text>
               <Text style={styles.textLimit}>Max 120 caracteres</Text>

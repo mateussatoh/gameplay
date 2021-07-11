@@ -18,7 +18,9 @@ export type EventProps = {
   guild: GuildProps;
   category: string;
   date: string;
+  game: string;
   description: string;
+  date_value: number;
 };
 
 type Props = RectButtonProps & {
@@ -29,7 +31,7 @@ export const Event = ({ data, ...rest }: Props) => {
   const [category] = categories.filter((item) => item.id === data.category);
 
   const { owner } = data.guild;
-  const { primary, on, secondary50, secondary70 } = theme.colors;
+  const { primary, on } = theme.colors;
 
   return (
     <RectButton {...rest}>
@@ -41,7 +43,7 @@ export const Event = ({ data, ...rest }: Props) => {
             <Text style={styles.title}>{data.guild.name}</Text>
             <Text style={styles.category}> {category.title} </Text>
           </View>
-          <Text style={styles.game}>Call of Duty</Text>
+          <Text style={styles.game}>{data.game}</Text>
           <View style={styles.footer}>
             <View style={styles.dateInfo}>
               <CalendarSvg />

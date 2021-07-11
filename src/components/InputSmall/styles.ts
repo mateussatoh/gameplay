@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     backgroundColor: theme.colors.secondary40,
     color: theme.colors.heading,
     borderRadius: 8,
-    fontFamily: theme.fonts.text400,
+    fontFamily: theme.fonts.text500,
     fontSize: 13,
     marginRight: 4,
     textAlign: "center",

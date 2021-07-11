@@ -13,9 +13,9 @@ import { Background } from "./src/components/Background";
 
 import { AuthProvider } from "./src/hooks/auth";
 
-LogBox.ignoreLogs([
-  "You are not currently signed in to Expo on your development machine.",
-]);
+// LogBox.ignoreLogs([
+//   "You are not currently signed in to Expo on your development machine.",
+// ]);
 
 const App = () => {
   const [fontsLoaded] = useFonts({

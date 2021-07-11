@@ -12,7 +12,7 @@ import { ListDivider } from "../../components/ListDivider";
 import { Background } from "../../components/Background";
 import { Loading } from "../../components/Loading";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { COLLECTION_EVENTS } from "../../configs/database";
+import { COLLECTION_EVENTS, COLLECTION_USER } from "../../configs/database";
 
 export const Home = () => {
   const navigation = useNavigation();
@@ -49,6 +49,13 @@ export const Home = () => {
   function handleEventCreate() {
     navigation.navigate("EventCreate");
   }
+
+  // function clearLocalStorage() {
+  //   AsyncStorage.removeItem(COLLECTION_EVENTS);
+  //   AsyncStorage.removeItem(COLLECTION_USER);
+  // }
+
+  // clearLocalStorage();
 
   return (
     <Background>

@@ -52,6 +52,7 @@ function AuthProvider({ children }: AuthProviderProps) {
     try {
       setLoading(true);
       const authUrl = `${api.defaults.baseURL}/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${SCOPE}`;
+      console.log(authUrl);
       const { type, params } = (await AuthSession.startAsync({
         authUrl,
       }).then()) as AuthResponse;
