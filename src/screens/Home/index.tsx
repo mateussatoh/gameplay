@@ -24,6 +24,9 @@ export const Home = () => {
   async function fetchEvents() {
     const storage = await AsyncStorage.getItem(COLLECTION_EVENTS);
     const storageEvents: EventProps[] = storage ? JSON.parse(storage) : [];
+    storageEvents.sort(
+      (eventA, eventB) => eventA.date_value - eventB.date_value
+    );
     if (category) {
       setEvents(storageEvents.filter((item) => item.category === category));
     } else {
@@ -52,7 +55,6 @@ export const Home = () => {
 
   // function clearLocalStorage() {
   //   AsyncStorage.removeItem(COLLECTION_EVENTS);
-  //   AsyncStorage.removeItem(COLLECTION_USER);
   // }
 
   // clearLocalStorage();
